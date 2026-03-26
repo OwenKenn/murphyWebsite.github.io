@@ -110,9 +110,10 @@ nav {
         }
 
         nav a.active {
-            color: #cc2233;
-            border-color: #cc2233;
+            color: #FF9900;
+            border-color: #FF9900;
             font-weight: bold;
+            font-size: 16px;
         }
 
 /* ── MAIN CONTENT AREA ── */
@@ -204,8 +205,6 @@ select.figma-select {
 }
 
 .home-building-img {
-    /*width: 350px;
-    height: 270px;*/
     background: #000;
     border: 1px solid #888;
     flex-shrink: 0;

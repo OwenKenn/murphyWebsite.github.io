@@ -33,7 +33,8 @@ const profData = {
         name: "Steven Graham",
         email: "steven.graham@lethpolytech.ca",
         img: "images/graham.jpg",
-        background: "Prof. Steven has over 20 years of experience in...",
+        background: "Prof. Steven has over 20 years of experience in the world of computer information and technology. He was a co-owner of one of the earlyest tech " +
+            "buisnesses in lethbridge, and has since turned his passion for running the 'techy' side of his buisness into a passion for teaching thouse skills.",
         description: "Steven teaches a variety of CIT courses focused on...",
         classes: ["CIT 1100 - Intro to Programming", "CIT 2200 - Web Development"]
     },
@@ -57,14 +58,13 @@ const profData = {
 
 function loadProf(value) {
     const prof = profData[value];
-
     // If blank option selected, reset to defaults
     if (!prof) {
         document.getElementById('prof-name-heading').textContent = "(Professor's Name)";
-        document.getElementById('prof-bg-text').textContent = "(A description of the professor's background)";
-        document.getElementById('prof-desc').textContent = "(Professor description)";
-        document.getElementById('prof-email').textContent = "_____._____@lethpolytech.ca";
-        document.getElementById('prof-classes').innerHTML = "<li><a href='classes.html'>(A class taught)</a></li>";
+        document.getElementById('prof-bg-text').textContent = "";
+        document.getElementById('prof-desc').textContent = "";
+        document.getElementById('prof-email').textContent = "";
+        document.getElementById('prof-classes').innerHTML = "<li><a href='classes.html'>(Classes taught...)</a></li>";
         document.querySelector('.prof-img img').src = "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
         return;
     }

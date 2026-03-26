@@ -204,8 +204,8 @@ select.figma-select {
 }
 
 .home-building-img {
-    width: 350px;
-    height: 270px;
+    /*width: 350px;
+    height: 270px;*/
     background: #000;
     border: 1px solid #888;
     flex-shrink: 0;

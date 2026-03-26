@@ -142,11 +142,12 @@ footer {
         color: #FFFFFF;
         text-decoration: none;
         font-size: 12px;
-        font-weight: normal;
+        font-weight: bold;
     }
 
     footer a:visited {
         color: #D3D3D3;
+        font-style: italic;
     }
 
     footer a:hover {

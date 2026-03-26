@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Classes — Lethpolytech CIT Student Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header id="main-header">
+        <div class="logo">
+            <svg viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+                <defs>
+                    <clipPath id="logo-circ"><circle cx="20" cy="20" r="14" /></clipPath>
+                    <linearGradient id="logo-grad" x1="0" y1="0" x2="0" y2="1">
+                        <stop offset="0%" stop-color="#5bc8f0" />
+                        <stop offset="45%" stop-color="#8dd8b0" />
+                        <stop offset="100%" stop-color="#72c040" />
+                    </linearGradient>
+                </defs>
+
+                <circle cx="20" cy="20" r="14" fill="url(#logo-grad)" />
+
+                <g clip-path="url(#logo-circ)">
+                    <path d="M6 20 L6 17 L10 11 L14 16 L17.5 12 L20 9 L22.5 12 L26 16 L30 11 L34 17 L34 20 Z" fill="#4ab0e0" />
+                    <path d="M6 18.5 L10 12.5 L14 17.5 L17.5 13.5 L20 10.5 L22.5 13.5 L26 17.5 L30 12.5 L34 18.5" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" />
+                    <path d="M6 20.5 L6 20 L9 15 L13 19 L17 15.5 L20 13 L23 15.5 L27 19 L31 15 L34 20 L34 20.5 Z" fill="#5bc8f0" />
+                    <path d="M6 20.5 L9 16 L13 20 L17 16.5 L20 14 L23 16.5 L27 20 L31 16 L34 20.5" fill="none" stroke="white" stroke-width="1.4" stroke-linejoin="round" stroke-linecap="round" />
+                    <path d="M6 22 Q13 20 20 20.5 Q27 21 34 22 L34 25 Q27 24 20 23.5 Q13 24 6 25 Z" fill="#7ecfa0" />
+                    <path d="M6 26 Q13 24.5 20 25 Q27 25.5 34 26 L34 30 Q27 29 20 28.5 Q13 29 6 30 Z" fill="#72c455" />
+                    <path d="M6 31 Q13 29.5 20 30 Q27 30.5 34 31 L34 34 Q27 33.5 20 33.5 Q13 33.5 6 34 Z" fill="#5db030" />
+                    <path d="M6 25 Q13 23.5 20 24 Q27 24.5 34 25" fill="none" stroke="white" stroke-width="1.3" />
+                    <path d="M6 30 Q13 28.5 20 29 Q27 29.5 34 30" fill="none" stroke="white" stroke-width="1.3" />
+                </g>
+            </svg>
+        </div>
+        <h1>Lethpolytech CIT Student Guide Page</h1>
+    </header>
+
+    <div class="body-wrap">
+        <nav>
+            <a href="index.html">Home</a>
+            <a href="map.html">Map</a>
+            <a href="classes.html" class="active">Classes</a>
+            <a href="profs.html">Prof's</a>
+            <a href="skills.html">Skills</a>
+        </nav>
+
+        <main id="main-area">
+            <div class="classes-content" id="classes-top">
+
+                <div class="class-section">
+                    <div class="class-title">Computer Programming: <span>!(DESCRIPTION OF CompPrograming)!</span></div>
+                    <div class="class-prof">Professor: <a href="profs.html">Steven Graham</a></div>
+                    <div class="class-schedule-label">Example of a Class Schedule:</div>
+                    <div class="class-schedule-box">(A table/image of a typical schedule)</div>
+                </div>
+
+                <div class="class-section">
+                    <div class="class-title">Comp TIA A+: <span>!(DESCRIPTION OF Comp TIA A+)!</span></div>
+                    <div class="class-prof">Professor: <a href="profs.html">Tim...</a></div>
+                    <div class="class-schedule-label">Example of a Class Schedule:</div>
+                    <div class="class-schedule-box">(A table/image of a typical schedule)</div>
+                </div>
+
+                <div class="class-section">
+                    <div class="class-title">Class 3: <span>!(DESCRIPTION)!</span></div>
+                    <div class="class-prof">Professor: <a href="profs.html">Prof...</a></div>
+                    <div class="class-schedule-label">Example of a Class Schedule:</div>
+                    <div class="class-schedule-box">(A table/image of a typical schedule)</div>
+                </div>
+
+                <div class="class-section">
+                    <div class="class-title">Class 4: <span>!(DESCRIPTION)!</span></div>
+                    <div class="class-prof">Professor: <a href="profs.html">Prof...</a></div>
+                    <div class="class-schedule-label">Example of a Class Schedule:</div>
+                    <div class="class-schedule-box">(A table/image of a typical schedule)</div>
+                </div>
+
+                <div class="class-repeat-note">!(THIS WILL REPEAT FOR EACH FIRST YEAR CLASS AT LEAST)!</div>
+
+            </div>
+        </main>
+    </div>
+
+    <footer>
+        <a href="https://lethbridgepolytechnic.ca" target="_blank">Polytechnic official site</a>
+        <a href="#" target="_blank">CIT Web</a>
+        <a href="https://canvas.instructure.com" target="_blank">Canvas</a>
+        <a href="#" target="_blank">Self-Service</a>
+        <a href="https://office.com" target="_blank">Office 365</a>
+        <a href="#" target="_blank">Help Desk</a>
+        <button class="top-btn visible" onclick="scrollToTop()">Top &#8896;</button>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

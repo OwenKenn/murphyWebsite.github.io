@@ -1,0 +1,631 @@
+﻿/* ════════════════════════════════════════════
+   CIT Student Guide — Shared Stylesheet
+   ════════════════════════════════════════════ */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #1a1a1a;
+    color: #e0e0e0;
+    font-family: Arial, sans-serif;
+    font-size: 14px;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* ── HEADER ── */
+header {
+    background: #BABABA;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    flex-shrink: 0;
+    transition: padding 0.3s ease;
+    position: relative;
+}
+
+    header.squished {
+        padding: 5px 20px;
+    }
+
+.logo {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    overflow: hidden;
+    position: absolute;
+    left: 7px;
+    transition: width 0.3s, height 0.3s;
+    /*background: #1a4a8a;*/
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+header.squished .logo {
+    width: 36px;
+    height: 36px;
+}
+
+.logo svg {
+    width: 80%;
+    height: 80%;
+}
+
+header h1 {
+    font-size: 22px;
+    font-weight: bold;
+    color: black;
+    text-align: center;
+    transition: font-size 0.3s;
+}
+
+header.squished h1 {
+    font-size: 16px;
+}
+
+/* ── BODY LAYOUT ── */
+.body-wrap {
+    display: flex;
+    flex: 1;
+    overflow: hidden;
+}
+
+/* ── SIDEBAR NAV ── */
+nav {
+    width: 90px;
+    background-color: #BABABA;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 14px;
+    gap: 8px;
+    flex-shrink: 0;
+}
+
+    nav a {
+        display: block;
+        width: 70px;
+        text-align: center;
+        padding: 8px 4px;
+        border: 1px solid #555;
+        border-radius: 3px;
+        background: #D9D9D9;
+        color: black;
+        text-decoration: none;
+        font-size: 13px;
+        transition: background 0.15s;
+    }
+
+        nav a:hover {
+            background: #4a4a4a;
+            color: white;
+        }
+
+        nav a.active {
+            color: #cc2233;
+            border-color: #cc2233;
+            font-weight: bold;
+        }
+
+/* ── MAIN CONTENT AREA ── */
+main {
+    flex: 1;
+    background: #FFFFFF;
+    overflow-y: auto;
+    position: relative;
+}
+
+/* ── FOOTER ── */
+footer {
+    background: #2d2d2d;
+    border-top: 1px solid #444;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    padding: 10px 20px;
+    flex-shrink: 0;
+    position: relative;
+    color: #FFFFFF;
+    font-size: 20px;
+}
+
+    footer a:link {
+        color: #FFFFFF;
+        text-decoration: none;
+        font-size: 12px;
+        font-weight: normal;
+    }
+
+    footer a:visited {
+        color: #D3D3D3;
+    }
+
+    footer a:hover {
+        color: #FFFFFF;
+        text-decoration: underline white;
+    }
+
+
+.top-btn {
+    position: absolute;
+    right: 16px;
+    background: #D9D9D9;
+    border: 1px solid #666;
+    color: black;
+    padding: 4px 14px;
+    font-size: 13px;
+    display: none;
+    align-items: center;
+    gap: 5px;
+    border-radius: 2px;
+}
+
+    .top-btn.visible {
+        display: flex;
+    }
+
+    .top-btn:hover {
+        background: #4a4a4a;
+    }
+
+/* ── SHARED SELECT STYLE ── */
+select.figma-select {
+    padding: 3px 6px;
+    font-size: 13px;
+    border: 1px solid #777;
+    background: #d8d8d8;
+    color: #111;
+}
+
+/* ════════════════════════════════════════════
+   HOME PAGE
+   ════════════════════════════════════════════ */
+.home-content {
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+.home-top-row {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.home-building-img {
+    width: 350px;
+    height: 270px;
+    background: #000;
+    border: 1px solid #888;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+    .home-building-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.home-top-text {
+    font-size: 13px;
+    color: #111;
+    line-height: 1.6;
+}
+
+.home-bottom-row {
+    display: flex;
+    gap: 14px;
+}
+
+.home-card {
+    flex: 1;
+    background: #c8c8c8;
+    border: 1px solid #888;
+    display: flex;
+    gap: 10px;
+    padding: 10px;
+    text-decoration: none;
+}
+
+    .home-card:hover {
+        background: #4a4a4a;
+    }
+
+.home-card-img {
+    width: 180px;
+    height: 160px;
+    background: #000;
+    border: 1px solid #777;
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+    .home-card-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.home-card:hover .home-card-text {
+    color: white;
+}
+
+.home-card-text {
+    font-size: 12px;
+    color: #111;
+}
+
+    .home-card-text a {
+        color: white;
+    }
+
+/* ════════════════════════════════════════════
+   MAP PAGE
+   ════════════════════════════════════════════ */
+.map-content {
+    padding: 14px;
+}
+
+.map-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+}
+
+.map-dropdown-wrap {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+    .map-dropdown-wrap label {
+        font-size: 13px;
+        color: #111;
+        font-weight: bold;
+    }
+
+.map-tabs {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.map-tab {
+    padding: 4px 14px;
+    border: 1px solid #777;
+    background: #d0d0d0;
+    color: #111;
+    font-size: 12px;
+}
+
+    .map-tab.active {
+        background: #888;
+        color: #fff;
+        font-weight: bold;
+    }
+
+    .map-tab:hover {
+        background: #bbb;
+    }
+
+.map-body {
+    display: flex;
+    gap: 0;
+}
+
+.map-key-panel {
+    width: 155px;
+    flex-shrink: 0;
+    padding-right: 10px;
+}
+
+    .map-key-panel h3 {
+        font-size: 13px;
+        font-weight: bold;
+        color: #111;
+        margin-bottom: 8px;
+    }
+
+.key-row {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 6px;
+    font-size: 12px;
+    color: #111;
+}
+
+.key-icon {
+    width: 26px;
+    height: 26px;
+    border: 1px solid #777;
+    background: #ccc;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.map-image-area {
+    flex: 1;
+    height: 340px;
+    background: #000;
+    border: 1px solid #888;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .map-image-area img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+/* ════════════════════════════════════════════
+   CLASSES PAGE
+   ════════════════════════════════════════════ */
+.classes-content {
+    padding: 14px;
+}
+
+.class-section {
+    border-top: 2px solid #888;
+    padding: 14px 0 10px;
+}
+
+    .class-section:first-child {
+        border-top: none;
+        padding-top: 0;
+    }
+
+.class-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 3px;
+}
+
+    .class-title span {
+        font-size: 13px;
+        font-weight: normal;
+        margin-left: 6px;
+        color: #222;
+    }
+
+.class-prof {
+    font-size: 12px;
+    color: #111;
+    margin-bottom: 2px;
+}
+
+    .class-prof a {
+        color: #0000cc;
+        text-decoration: underline;
+    }
+
+.class-schedule-label {
+    font-size: 12px;
+    color: #111;
+    margin-bottom: 6px;
+}
+
+.class-schedule-box {
+    background: #aaaaaa;
+    border: 1px solid #777;
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    font-size: 13px;
+    color: #333;
+}
+
+.class-repeat-note {
+    text-align: center;
+    font-size: 13px;
+    color: #222;
+    border-top: 2px solid #888;
+    padding-top: 10px;
+    margin-top: 6px;
+}
+
+/* ════════════════════════════════════════════
+   PROFESSORS PAGE
+   ════════════════════════════════════════════ */
+.profs-content {
+    padding: 14px;
+}
+
+.profs-top-bar {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 14px;
+}
+
+.prof-name-heading {
+    font-size: 18px;
+    font-weight: bold;
+    color: #111;
+    flex: 1;
+    text-align: center;
+}
+
+.prof-layout {
+    display: flex;
+    gap: 16px;
+}
+
+.prof-left {
+    width: 200px;
+    flex-shrink: 0;
+}
+
+.prof-img {
+    width: 200px;
+    height: 220px;
+    background: #000;
+    border: 1px solid #777;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+    .prof-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+    }
+
+.prof-bg-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #111;
+    margin-bottom: 4px;
+}
+
+.prof-bg-text {
+    font-size: 12px;
+    color: #111;
+    line-height: 1.55;
+}
+
+.prof-right {
+    flex: 1;
+}
+
+.prof-field {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 10px;
+    align-items: flex-start;
+}
+
+.prof-field-label {
+    font-size: 13px;
+    font-weight: bold;
+    color: #111;
+    min-width: 90px;
+    flex-shrink: 0;
+    padding-top: 1px;
+}
+
+.prof-field-value {
+    font-size: 13px;
+    color: #111;
+    line-height: 1.6;
+}
+
+    .prof-field-value a {
+        color: #0000cc;
+        text-decoration: underline;
+    }
+
+    .prof-field-value ul {
+        list-style: none;
+    }
+
+        .prof-field-value ul li::before {
+            content: '-';
+            margin-right: 4px;
+        }
+
+.prof-schedule-box {
+    background: #aaaaaa;
+    border: 1px solid #777;
+    min-height: 140px;
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+    font-size: 13px;
+    color: #333;
+}
+
+.prof-office-row {
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+}
+
+/* ════════════════════════════════════════════
+   SKILLS PAGE
+   ════════════════════════════════════════════ */
+.skills-content {
+    padding: 14px;
+}
+
+.skills-section {
+    margin-bottom: 20px;
+}
+
+.skills-section-title {
+    font-size: 16px;
+    font-weight: bold;
+    color: #111;
+}
+
+.skills-section-desc {
+    font-size: 13px;
+    color: #111;
+}
+
+.skills-sublabel {
+    font-size: 13px;
+    color: #111;
+    margin: 6px 0 6px 16px;
+}
+
+.skills-semesters {
+    display: flex;
+    gap: 14px;
+    margin-left: 16px;
+}
+
+.skills-box {
+    border: 1px solid #777;
+    background: #c8c8c8;
+    padding: 8px 12px;
+    min-width: 180px;
+    font-size: 13px;
+    color: #111;
+}
+
+    .skills-box h4 {
+        font-size: 13px;
+        font-weight: bold;
+        margin-bottom: 5px;
+        color: #111;
+    }
+
+    .skills-box ul {
+        list-style: none;
+    }
+
+        .skills-box ul li {
+            margin-bottom: 2px;
+        }
+
+    .skills-box a {
+        color: #cc2233;
+        text-decoration: underline;
+    }

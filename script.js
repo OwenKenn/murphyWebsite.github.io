@@ -30,12 +30,12 @@ function selectMapTab(el) {
 // Professor data
 const profData = {
     graham: {
-        name: "Steven Graham",
-        email: "steven.graham@lethpolytech.ca",
-        img: "images/graham.jpg",
-        background: "Prof. Steven has over 20 years of experience in the world of computer information and technology. He was a co-owner of one of the earlyest tech " +
+        name: "Stephen Graham",
+        email: "stephen.graham@lethpolytech.ca",
+        img: "images/stephen.jpg",
+        background: "Prof. Stephen has over 20 years of experience in the world of computer information and technology. He was a co-owner of one of the earlyest tech " +
             "buisnesses in lethbridge, and has since turned his passion for running the 'techy' side of his buisness into a passion for teaching thouse skills.",
-        description: "Steven teaches a variety of CIT courses focused on...",
+        description: "Stephen teaches a variety of CIT courses focused on...",
         classes: ["CIT 1100 - Intro to Programming", "CIT 2200 - Web Development"]
     },
     tim: {

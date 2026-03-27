@@ -480,6 +480,7 @@ select.figma-select {
 }
 
 .prof-img {
+    /*TODO - Change size of image and re-align text.*/
     width: 200px;
     height: 220px;
     background: #000;

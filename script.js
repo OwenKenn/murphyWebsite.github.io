@@ -21,9 +21,33 @@ function scrollToTop() {
 }
 
 // ── Map tab switching (Map page only) ──
+let currentBuilding = 'full';
+let currentTab = 'floorplan';
+
 function selectMapTab(el) {
     document.querySelectorAll('.map-tab').forEach(t => t.classList.remove('active'));
     el.classList.add('active');
+    currentTab = el.dataset.tab;
+    renderMap();
+}
+
+function loadBuildingMap() {
+    currentBuilding = document.getElementById('building-select').value;
+    renderMap();
+}
+
+function renderMap() {
+    const img = document.querySelector('.map-image-area img');
+    if (!currentBuilding) {
+        img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
+        img.alt = 'Select a building';
+        img.src = `maps/full_${currentTab}.png`;
+        img.alt = `full-${currentTab} map`;
+        return;
+    }
+    // Swap in the correct image for the building + tab combination
+    img.src = `maps/${currentBuilding}_${currentTab}.png`;
+    img.alt = `${currentBuilding}-${currentTab} map`;
 }
 
 // ── Prof dropdown (Profs page only) ──

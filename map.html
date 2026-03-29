@@ -52,16 +52,18 @@
                 <div class="map-top-bar">
                     <div class="map-dropdown-wrap">
                         <label for="building-select">Building Map</label>
-                        <select class="figma-select" id="building-select">
-                            <option>--SELECT--</option>
+                        <select class="figma-select" id="building-select" onchange="loadBuildingMap()">
+                            <option value="">--SELECT--</option>
+                            <option value="full">Full Building</option>
                             <option value="ib">IB Building</option>
                             <option value="main">Main Hall</option>
                             <option value="tech">Tech Centre</option>
                         </select>
                     </div>
                     <div class="map-tabs">
-                        <div class="map-tab active" onclick="selectMapTab(this)">Schedule</div>
-                        <div class="map-tab" onclick="selectMapTab(this)">Parking</div>
+                        <div class="map-tab active" data-tab="floorplan" onclick="selectMapTab(this)">General</div>
+                        <div class="map-tab" data-tab="parking" onclick="selectMapTab(this)">Parking</div>
+                        <div class="map-tab" data-tab="accessibility" onclick="selectMapTab(this)">Accessibility</div>
                     </div>
                 </div>
 
@@ -88,7 +90,7 @@
                         <div class="key-row"><span>-ext...</span></div>
                         <div class="key-row"><span>-ext...</span></div>
                         <div class="key-row"><span>-ext...</span></div>
-                    </div>
+                    </div>  
                     <div class="map-image-area">
                         <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="A map of the school">
                     </div>

@@ -2,18 +2,6 @@
    CIT Student Guide — Shared JavaScript
    ════════════════════════════════════════════ */
 
-// ── Header squish on scroll ──
-/*
-const mainArea = document.getElementById('main-area');
-const mainHeader = document.getElementById('main-header');
-
-if (mainArea && mainHeader) {
-    mainArea.addEventListener('scroll', () => {
-        mainHeader.classList.toggle('squished', mainArea.scrollTop > 30);
-    });
-}
-*/
-
 // ── Scroll to top (Classes & Skills pages) ──
 function scrollToTop() {
     const area = document.getElementById('main-area');
@@ -41,14 +29,156 @@ function renderMap() {
     if (!currentBuilding) {
         img.src = 'data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=';
         img.alt = 'Select a building';
-        img.src = `maps/full_${currentTab}.png`;
-        img.alt = `full-${currentTab} map`;
         return;
     }
-    // Swap in the correct image for the building + tab combination
     img.src = `maps/${currentBuilding}_${currentTab}.png`;
     img.alt = `${currentBuilding}-${currentTab} map`;
+
+    // Reset pan/zoom whenever a new map loads
+    resetTransform();
 }
+
+// ── Pan & Zoom ──
+let scale = 1;
+let originX = 0;
+let originY = 0;
+let isPanning = false;
+let startX = 0;
+let startY = 0;
+
+const MIN_SCALE = 1;
+const MAX_SCALE = 5;
+
+function resetTransform() {
+    scale = 1;
+    originX = 0;
+    originY = 0;
+    const img = document.querySelector('.map-image-area img');
+    if (img) {
+        img.style.transform = 'none';
+        img.style.transformOrigin = '0 0';
+        img.style.cursor = 'default';
+    }
+}
+
+function applyTransform() {
+    const img = document.querySelector('.map-image-area img');
+    if (!img) return;
+    img.style.transformOrigin = '0 0';
+    img.style.transform = `translate(${originX}px, ${originY}px) scale(${scale})`;
+    img.style.cursor = isPanning ? 'grabbing' : (scale > 1 ? 'grab' : 'default');
+}
+
+function clampPan() {
+    const area = document.querySelector('.map-image-area');
+    if (!area) return;
+    const areaW = area.clientWidth;
+    const areaH = area.clientHeight;
+    originX = Math.min(0, Math.max(originX, areaW - areaW * scale));
+    originY = Math.min(0, Math.max(originY, areaH - areaH * scale));
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+    renderMap();
+    const area = document.querySelector('.map-image-area');
+    if (!area) return;
+
+    area.addEventListener('dragstart', (e) => e.preventDefault());
+
+    // Scroll to zoom
+    area.addEventListener('wheel', (e) => {
+        e.preventDefault();
+
+        const rect = area.getBoundingClientRect();
+        const mouseX = e.clientX - rect.left;
+        const mouseY = e.clientY - rect.top;
+
+        const delta = e.deltaY > 0 ? 0.9 : 1.1;
+        const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * delta));
+
+        // Zoom toward mouse cursor
+        originX = mouseX - (mouseX - originX) * (newScale / scale);
+        originY = mouseY - (mouseY - originY) * (newScale / scale);
+        scale = newScale;
+
+        clampPan();
+        applyTransform();
+    }, { passive: false });
+
+    // Mouse drag to pan
+    area.addEventListener('mousedown', (e) => {
+        if (scale <= 1) return;
+        isPanning = true;
+        startX = e.clientX - originX;
+        startY = e.clientY - originY;
+        applyTransform();
+    });
+
+    document.addEventListener('mousemove', (e) => {
+        if (!isPanning) return;
+        originX = e.clientX - startX;
+        originY = e.clientY - startY;
+        clampPan();
+        applyTransform();
+    });
+
+    document.addEventListener('mouseup', () => {
+        if (!isPanning) return;
+        isPanning = false;
+        applyTransform();
+    });
+
+    // Touch support (mobile)
+    let lastTouchDist = null;
+
+    area.addEventListener('touchstart', (e) => {
+        if (e.touches.length === 1 && scale > 1) {
+            isPanning = true;
+            startX = e.touches[0].clientX - originX;
+            startY = e.touches[0].clientY - originY;
+        }
+        if (e.touches.length === 2) {
+            lastTouchDist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+        }
+    }, { passive: true });
+
+    area.addEventListener('touchmove', (e) => {
+        e.preventDefault();
+        if (e.touches.length === 1 && isPanning) {
+            originX = e.touches[0].clientX - startX;
+            originY = e.touches[0].clientY - startY;
+            clampPan();
+            applyTransform();
+        }
+        if (e.touches.length === 2 && lastTouchDist !== null) {
+            const dist = Math.hypot(
+                e.touches[0].clientX - e.touches[1].clientX,
+                e.touches[0].clientY - e.touches[1].clientY
+            );
+            const rect = area.getBoundingClientRect();
+            const midX = ((e.touches[0].clientX + e.touches[1].clientX) / 2) - rect.left;
+            const midY = ((e.touches[0].clientY + e.touches[1].clientY) / 2) - rect.top;
+            const delta = dist / lastTouchDist;
+            const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * delta));
+
+            originX = midX - (midX - originX) * (newScale / scale);
+            originY = midY - (midY - originY) * (newScale / scale);
+            scale = newScale;
+            lastTouchDist = dist;
+
+            clampPan();
+            applyTransform();
+        }
+    }, { passive: false });
+
+    area.addEventListener('touchend', () => {
+        isPanning = false;
+        lastTouchDist = null;
+    });
+});
 
 // ── Prof dropdown (Profs page only) ──
 // Professor data

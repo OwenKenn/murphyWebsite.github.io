@@ -51,9 +51,8 @@
 
                 <div class="map-top-bar">
                     <div class="map-dropdown-wrap">
-                        <label for="building-select">Building Map</label>
+                        <label for="building-select">Interactable Building Map</label>
                         <select class="figma-select" id="building-select" onchange="loadBuildingMap()">
-                            <option value="">--SELECT--</option>
                             <option value="full">Full Building</option>
                             <option value="ib">IB Building</option>
                             <option value="main">Main Hall</option>
@@ -70,29 +69,12 @@
                 <div class="map-body">
                     <div class="map-key-panel">
                         <h3>Map Key:</h3>
-                        <div class="key-row">
-                            <div class="key-icon">
-                                <svg width="18" height="18" viewBox="0 0 18 18">
-                                    <rect x="2" y="2" width="6" height="14" fill="none" stroke="#333" stroke-width="1.5" />
-                                    <rect x="10" y="2" width="6" height="14" fill="none" stroke="#333" stroke-width="1.5" />
-                                </svg>
-                            </div>
-                            <span>-Door:</span>
+                        <div class="map-key" id="key-accessibility">
+                            <img src="images/key_accessibility.png" alt="Accessibility map key">
                         </div>
-                        <div class="key-row">
-                            <div class="key-icon">
-                                <svg width="18" height="18" viewBox="0 0 18 18">
-                                    <path d="M4 14 L4 5 L12 5" fill="none" stroke="#333" stroke-width="1.5" />
-                                </svg>
-                            </div>
-                            <span>-Exit:</span>
-                        </div>
-                        <div class="key-row"><span>-ext...</span></div>
-                        <div class="key-row"><span>-ext...</span></div>
-                        <div class="key-row"><span>-ext...</span></div>
-                    </div>  
+                    </div> 
                     <div class="map-image-area">
-                        <img src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="A map of the school">
+                        <img draggable="false" src="data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=" alt="A map of the school">
                     </div>
                 </div>
 

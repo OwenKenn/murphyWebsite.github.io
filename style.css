@@ -277,6 +277,10 @@ select.figma-select {
    ════════════════════════════════════════════ */
 .map-content {
     padding: 14px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
 }
 
 .map-top-bar {
@@ -325,12 +329,24 @@ select.figma-select {
 .map-body {
     display: flex;
     gap: 0;
+    flex: 1;
+    min-height: 0; /* prevents flex children from overflowing */
 }
 
 .map-key-panel {
-    width: 155px;
+    width: 300px;
+    height: 150%;
     flex-shrink: 0;
     padding-right: 10px;
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+}
+
+.map-key img {
+    width: 100%;
+    height: 100%;
+    height: auto;
+    display: block;
 }
 
     .map-key-panel h3 {
@@ -362,20 +378,47 @@ select.figma-select {
 
 .map-image-area {
     flex: 1;
-    height: 340px;
-    background: #000;
+    background: #fff;
     border: 1px solid #888;
     overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    cursor: grab;
+    user-select: none;
+    position: relative;
+    min-height: 0;
 }
 
     .map-image-area img {
+        display: block;
         width: 100%;
         height: 100%;
-        object-fit: cover;
+        object-fit: contain;
+    }
+
+.map-key {
+    overflow-y: auto;
+    max-height: calc(100vh - 160px);
+}
+
+    .map-key img {
+        width: 135px;
+        height: auto;
         display: block;
+    }
+.key-entry {
+    display: flex;
+    align-items: flex-start;
+    gap: 5px;
+    margin-bottom: 4px;
+    font-size: 10px;
+    color: #111;
+    line-height: 1.3;
+}
+
+    .key-entry span:first-child {
+        font-size: 13px;
+        flex-shrink: 0;
+        width: 18px;
+        text-align: center;
     }
 
 /* ════════════════════════════════════════════

@@ -101,7 +101,7 @@ nav {
         color: black;
         text-decoration: none;
         font-size: 13px;
-        transition: background 0.15s;
+        /*transition: background 0.15s;*/
     }
 
         nav a:hover {
@@ -673,3 +673,250 @@ select.figma-select {
         color: #cc2233;
         text-decoration: underline;
     }
+
+/* ════════════════════════════════════════════
+   RESPONSIVE / MOBILE STYLES
+   ════════════════════════════════════════════ */
+
+@media (max-width: 768px) {
+
+    /* ── Body & layout ── */
+    body {
+        overflow: auto;
+        height: auto;
+        min-height: 100vh;
+    }
+
+    .body-wrap {
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    main {
+        overflow-y: visible;
+    }
+
+    /* ── Header ── */
+    header {
+        position: sticky;
+        top: 0;
+        z-index: 100;
+    }
+
+        header h1 {
+            font-size: 15px;
+        }
+
+    .logo {
+        width: 44px;
+        height: 44px;
+        left: 8px;
+    }
+
+    /* ── Sidebar nav → bottom tab bar ── */
+    nav {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        padding: 6px 4px;
+        gap: 4px;
+        order: 99;
+        position: sticky;
+        bottom: 0;
+        z-index: 100;
+        border-top: 1px solid #999;
+    }
+
+        nav a {
+            width: auto;
+            flex: 1;
+            font-size: 11px;
+            padding: 6px 2px;
+        }
+
+            nav a.active {
+                font-size: 12px;
+            }
+
+    /* ── Footer ── */
+    footer {
+        flex-wrap: wrap;
+        gap: 10px 20px;
+        font-size: 14px;
+        padding: 10px 16px 60px; /* extra bottom padding so nav doesn't overlap */
+        justify-content: flex-start;
+    }
+
+        footer a:link,
+        footer a:visited {
+            font-size: 12px;
+        }
+
+    .top-btn {
+        position: static;
+        margin-left: auto;
+    }
+
+    /* ══════════════════
+       HOME PAGE
+    ══════════════════ */
+    .home-top-row {
+        flex-direction: column;
+    }
+
+    .home-building-img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .home-bottom-row {
+        flex-direction: column;
+    }
+
+    .home-card {
+        flex-direction: column;
+    }
+
+    .home-card-img {
+        width: 100%;
+        height: 160px;
+    }
+
+    /* ══════════════════
+       MAP PAGE
+    ══════════════════ */
+    .map-content {
+        height: auto;
+    }
+
+    .map-top-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+
+    .map-tabs {
+        margin-left: 0;
+        width: 100%;
+        justify-content: stretch;
+    }
+
+    .map-tab {
+        flex: 1;
+        text-align: center;
+    }
+
+    .map-body {
+        flex-direction: column-reverse;
+    }
+
+    .map-key-panel {
+        width: 100%;
+        max-height: none;
+        padding-right: 0;
+        padding-bottom: 10px;
+        border-bottom: 1px solid #888;
+        margin-bottom: 10px;
+    }
+
+    .map-key {
+        max-height: none;
+    }
+
+        .map-key img {
+            width: 100%;
+            max-width: 200px;
+        }
+
+    .map-image-area {
+        width: 100%;
+        height: 320px;
+    }
+
+    /* ══════════════════
+       CLASSES PAGE
+    ══════════════════ */
+    .class-schedule-box {
+        height: auto;
+        min-height: 80px;
+        padding: 16px;
+    }
+
+    /* ══════════════════
+       PROFESSORS PAGE
+    ══════════════════ */
+    .profs-top-bar {
+        flex-wrap: wrap;
+    }
+
+    .prof-name-heading {
+        width: 100%;
+        text-align: left;
+        font-size: 15px;
+    }
+
+    .prof-layout {
+        flex-direction: column;
+    }
+
+    .prof-left {
+        width: 100%;
+    }
+
+    .prof-img {
+        width: 100%;
+        height: 240px;
+    }
+
+    .prof-office-row {
+        flex-direction: column;
+    }
+
+    .prof-schedule-box {
+        min-height: 100px;
+        width: 100%;
+    }
+
+    /* ══════════════════
+       SKILLS PAGE
+    ══════════════════ */
+    .skills-semesters {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .skills-box {
+        min-width: 0;
+        width: 100%;
+    }
+}
+
+/* ── Tablet (769px – 1024px): partial adjustments ── */
+@media (min-width: 769px) and (max-width: 1024px) {
+    .home-bottom-row {
+        flex-wrap: wrap;
+    }
+
+    .prof-img {
+        width: 160px;
+        height: 180px;
+    }
+
+    .prof-left {
+        width: 160px;
+    }
+
+    .skills-semesters {
+        flex-wrap: wrap;
+    }
+
+    .skills-box {
+        min-width: 140px;
+    }
+
+    footer {
+        flex-wrap: wrap;
+        gap: 8px 20px;
+        font-size: 14px;
+    }
+}

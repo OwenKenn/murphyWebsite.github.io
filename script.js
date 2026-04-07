@@ -193,19 +193,20 @@ const profData = {
         classes: ["CIT 1100 - Intro to Programming", "CIT 2200 - Web Development"]
     },
     tim: {
-        name: "Tim ...",
-        email: "tim.______@lethpolytech.ca",
+        name: "Timothy Frantz",
+        email: "timothy.frantz@lethpolytech.ca",
         img: "images/TestImage.png",
         background: "Prof. Tim's background includes...",
         description: "Tim specializes in...",
         classes: ["CIT 1500 - Networking", "CIT 2400 - Database Systems"]
     },
     shoja: {
-        name: "Shoja...",
-        email: "Shoja.____@lethpolytech.ca",
+        name: "Shoja Mazidi",
+        email: "shoja.mazidi@lethpolytech.ca",
         img: "images/shoja.jpg",
-        background: "Prof. Shoja has a background in...",
-        description: "Prof. Shoja focuses on...",
+        background: "Prof. Shoja has a background in electrical engineering, and has a passion for that side of computer science.",
+        description: "Prof. Shoja focuses on the more technical side of the industry, with his lesions focusing on the fundamental" + 
+        " backbones that allow this industry to work.",
         classes: ["CIT 1300 - Computer Mathamatics", "CIT 2600 - Computer Networking"]
     }
 };

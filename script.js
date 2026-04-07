@@ -195,7 +195,7 @@ const profData = {
     tim: {
         name: "Timothy Frantz",
         email: "timothy.frantz@lethpolytech.ca",
-        img: "images/TestImage.png",
+        img: "images/Tim.png",
         background: "Prof. Tim's background includes...",
         description: "Tim specializes in...",
         classes: ["CIT 1500 - Networking", "CIT 2400 - Database Systems"]

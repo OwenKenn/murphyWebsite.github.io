@@ -200,7 +200,7 @@ const profData = {
         description: "Tim specializes in...",
         classes: ["CIT 1500 - Networking", "CIT 2400 - Database Systems"]
     },
-    patel: {
+    shoja: {
         name: "Shoja...",
         email: "Shoja.____@lethpolytech.ca",
         img: "images/shoja.jpg",
@@ -221,7 +221,8 @@ function loadProf(value) {
         document.getElementById('prof-classes').innerHTML = "<li><a href='classes.html'>(Classes taught...)</a></li>";
         document.querySelector('.prof-img img').src = "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
         return;
-    }
+     }
+   
 
     // Update each element
     document.getElementById('prof-name-heading').textContent = prof.name;

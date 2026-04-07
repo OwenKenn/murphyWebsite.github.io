@@ -43,7 +43,6 @@ header {
     position: absolute;
     left: 7px;
     transition: width 0.3s, height 0.3s;
-    /*background: #1a4a8a;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -332,10 +331,10 @@ select.figma-select {
     flex: 1;
     min-height: 0; /* prevents flex children from overflowing */
 }
-
+/*NOTE; 300px wide key image needed. Shoud shrink and scale the image*/
 .map-key-panel {
     width: 300px;
-    height: 150%;
+    height: 100%;
     flex-shrink: 0;
     padding-right: 10px;
     overflow-y: auto;

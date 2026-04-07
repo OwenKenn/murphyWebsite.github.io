@@ -195,7 +195,7 @@ const profData = {
     tim: {
         name: "Timothy Frantz",
         email: "timothy.frantz@lethpolytech.ca",
-        img: "images/Tim.jpg",
+        img: "images/tim.jpg",
         background: "Timothy Frantz has been an instructor for the CIT program since 2016. Tim’s teaching philosophy is enabling his students to succeed, in school and in their careers. " +
             "He has taught a variety of courses to students in multiple programs for the past 30 years, all while being a partner in an IT Consulting firm, a licensed Property Manager, a " +
             "gourmet food and spice creator and entrepreneur, and an active member of the Lethbridge Kinsmen. Tim’s primary focus in his own life is his family, including seven very grown " +

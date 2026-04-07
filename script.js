@@ -190,15 +190,18 @@ const profData = {
         background: "Prof. Stephen has over 20 years of experience in the world of computer information and technology. He was a co-owner of one of the earlyest tech " +
             "buisnesses in lethbridge, and has since turned his passion for running the 'techy' side of his buisness into a passion for teaching thouse skills.",
         description: "Stephen teaches a variety of CIT courses focused on...",
-        classes: ["CIT 1100 - Intro to Programming", "CIT 2200 - Web Development"]
+        classes: ["CIT 1154 - Computer Programing I-III", "CIT 1158 - Computer Networking II-III"]
     },
     tim: {
         name: "Timothy Frantz",
         email: "timothy.frantz@lethpolytech.ca",
-        img: "images/Tim.png",
-        background: "Prof. Tim's background includes...",
-        description: "Tim specializes in...",
-        classes: ["CIT 1500 - Networking", "CIT 2400 - Database Systems"]
+        img: "images/Tim.jpg",
+        background: "Timothy Frantz has been an instructor for the CIT program since 2016. Tim’s teaching philosophy is enabling his students to succeed, in school and in their careers. " +
+            "He has taught a variety of courses to students in multiple programs for the past 30 years, all while being a partner in an IT Consulting firm, a licensed Property Manager, a " +
+            "gourmet food and spice creator and entrepreneur, and an active member of the Lethbridge Kinsmen. Tim’s primary focus in his own life is his family, including seven very grown " +
+            "children and 7.5 grandchildren. If the weather outside is decent, you will find him on a golf course, or travelling to tropical beaches, often in Mexico.",
+        description: "Timothy teaches Database design and UX usability and design. His experence as a teacher and his expernce in the industry gives him a unique prespective and unique real-world lessions to teach.",
+        classes: ["CIT 2268 - UX usability and design", "CIT 1163 - Database Management Systems"] //TODO - Update all CIT Numbers
     },
     shoja: {
         name: "Shoja Mazidi",
@@ -207,7 +210,7 @@ const profData = {
         background: "Prof. Shoja has a background in electrical engineering, and has a passion for that side of computer science.",
         description: "Prof. Shoja focuses on the more technical side of the industry, with his lesions focusing on the fundamental" + 
         " backbones that allow this industry to work.",
-        classes: ["CIT 1300 - Computer Mathamatics", "CIT 2600 - Computer Networking"]
+        classes: ["CIT 1152 - Computer Mathamatics", "CIT 1158 - Computer Networking I"] //TODO - Update all CIT Numbers
     }
 };
 
@@ -240,7 +243,6 @@ function loadProf(value) {
 }
 
 // ── Footer link visited state (All pages) ──
-// Footer links start bold, become normal after click
 document.querySelectorAll('footer a').forEach(link => {
     // Start bold by default
     link.style.fontWeight = 'bold';
@@ -254,6 +256,22 @@ document.querySelectorAll('footer a').forEach(link => {
     link.addEventListener('click', function () {
         localStorage.setItem(this.href, 'visited');
         this.style.fontWeight = 'normal';
+        this.style.fontStyle = 'italic'; // Optional: also make it italic to show it's been visited
+    });
+});
+
+
+// - Skills link visited state -
+document.querySelectorAll('.skills-box a').forEach(link => {
+    // On page load, check if this link was previously clicked
+    if (localStorage.getItem(link.href)) {
+        link.style.fontWeight = 'normal';
+    }
+
+    // On click, save it and make it normal
+    link.addEventListener('click', function () {
+        localStorage.setItem(this.href, 'visited');
+        this.style.fontWeight = 'bold';
         this.style.fontStyle = 'italic'; // Optional: also make it italic to show it's been visited
     });
 });

@@ -100,7 +100,6 @@ nav {
         color: black;
         text-decoration: none;
         font-size: 13px;
-        /*transition: background 0.15s;*/
     }
 
         nav a:hover {
@@ -669,9 +668,18 @@ select.figma-select {
         }
 
     .skills-box a {
-        color: #cc2233;
-        text-decoration: underline;
+        color: blue;
+        text-decoration: none;
     }
+        .skills-box a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .skills-box a:active {
+            text-decoration: underline;
+            font-weight: bold;
+        }
 
 /* ════════════════════════════════════════════
    RESPONSIVE / MOBILE STYLES

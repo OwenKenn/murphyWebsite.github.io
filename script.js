@@ -187,9 +187,11 @@ const profData = {
         name: "Stephen Graham",
         email: "stephen.graham@lethpolytech.ca",
         img: "images/stephen.jpg",
-        background: "Prof. Stephen has over 20 years of experience in the world of computer information and technology. He was a co-owner of one of the earlyest tech " +
-            "buisnesses in lethbridge, and has since turned his passion for running the 'techy' side of his buisness into a passion for teaching thouse skills.",
-        description: "Stephen teaches a variety of CIT courses focused on...",
+        background: "Prof. Stephen has over 20 years of experience in the world of computer information and technology. He was a co-owner " +
+            "of one of the earliest tech businesses in Lethbridge and has since turned his passion for running the 'techy' side of his " +
+            "business into a passion for teaching those skills.",
+        description: "Stephen teaches a variety of CIT courses focused on Computer Programing and Networking. He has decades of " +
+            "experience with computer programing, and this gives him a unique talent with those skills is evident in his teaching",
         classes: ["CIT 1154 - Computer Programing I-III", "CIT 1158 - Computer Networking II-III"]
     },
     tim: {
@@ -200,14 +202,14 @@ const profData = {
             "He has taught a variety of courses to students in multiple programs for the past 30 years, all while being a partner in an IT Consulting firm, a licensed Property Manager, a " +
             "gourmet food and spice creator and entrepreneur, and an active member of the Lethbridge Kinsmen. Tim’s primary focus in his own life is his family, including seven very grown " +
             "children and 7.5 grandchildren. If the weather outside is decent, you will find him on a golf course, or travelling to tropical beaches, often in Mexico.",
-        description: "Timothy teaches Database design and UX usability and design. His experence as a teacher and his expernce in the industry gives him a unique prespective and unique real-world lessions to teach.",
-        classes: ["CIT 2268 - UX usability and design", "CIT 1163 - Database Management Systems"] //TODO - Update all CIT Numbers
+        description: "Timothy teaches Database design and UX usability and design. His experience as a teacher and in the industry gives him a unique perspective and unique real-world lessons to teach.",
+        classes: ["CIT 2268 - UX usability and design", "CIT 1163 - Database Management Systems"]
     },
     shoja: {
         name: "Shoja Mazidi",
         email: "shoja.mazidi@lethpolytech.ca",
         img: "images/shoja.jpg",
-        background: "Prof. Shoja has a background in electrical engineering, and has a passion for that side of computer science.",
+        background: "Prof. Shoja has a background in electrical engineering and has a passion for that side of computer science.",
         description: "Prof. Shoja focuses on the more technical side of the industry, with his lesions focusing on the fundamental" + 
         " backbones that allow this industry to work.",
         classes: ["CIT 1152 - Computer Mathamatics", "CIT 1158 - Computer Networking I"] //TODO - Update all CIT Numbers

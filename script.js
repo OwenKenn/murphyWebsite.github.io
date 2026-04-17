@@ -4,6 +4,7 @@
 
 // ── Scroll to top (Classes & Skills pages) ──
 function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
     const area = document.getElementById('main-area');
     if (area) area.scrollTo({ top: 0, behavior: 'smooth' });
 }
@@ -105,33 +106,38 @@ function zoomOut() {
 }
 
 document.addEventListener('DOMContentLoaded', () => {
+    // Load default prof on profs page
+    const sel = document.getElementById('prof-select');
+    if (sel) {
+        const params = new URLSearchParams(window.location.search);
+        const profParam = params.get('prof');
+        if (profParam && sel.querySelector(`option[value="${profParam}"]`)) {
+            sel.value = profParam;
+        }
+        loadProf(sel.value);
+    }
+
+    // Map setup
     renderMap();
     const area = document.querySelector('.map-image-area');
     if (!area) return;
 
     area.addEventListener('dragstart', (e) => e.preventDefault());
 
-    // Scroll to zoom
     area.addEventListener('wheel', (e) => {
         e.preventDefault();
-
         const rect = area.getBoundingClientRect();
         const mouseX = e.clientX - rect.left;
         const mouseY = e.clientY - rect.top;
-
         const delta = e.deltaY > 0 ? 0.9 : 1.1;
         const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * delta));
-
-        // Zoom toward mouse cursor
         originX = mouseX - (mouseX - originX) * (newScale / scale);
         originY = mouseY - (mouseY - originY) * (newScale / scale);
         scale = newScale;
-
         clampPan();
         applyTransform();
     }, { passive: false });
 
-    // Mouse drag to pan
     area.addEventListener('mousedown', (e) => {
         if (scale <= 1) return;
         isPanning = true;
@@ -154,7 +160,6 @@ document.addEventListener('DOMContentLoaded', () => {
         applyTransform();
     });
 
-    // Touch support (mobile)
     let lastTouchDist = null;
 
     area.addEventListener('touchstart', (e) => {
@@ -189,12 +194,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const midY = ((e.touches[0].clientY + e.touches[1].clientY) / 2) - rect.top;
             const delta = dist / lastTouchDist;
             const newScale = Math.min(MAX_SCALE, Math.max(MIN_SCALE, scale * delta));
-
             originX = midX - (midX - originX) * (newScale / scale);
             originY = midY - (midY - originY) * (newScale / scale);
             scale = newScale;
             lastTouchDist = dist;
-
             clampPan();
             applyTransform();
         }
@@ -218,7 +221,119 @@ const profData = {
             "business into a passion for teaching those skills.",
         description: "Stephen teaches a variety of CIT courses focused on Computer Programing and Networking. He has decades of " +
             "experience with computer programing, and this gives him a unique talent with those skills is evident in his teaching",
-        classes: ["CIT 1154 - Computer Programing I-III", "CIT 1158 - Computer Networking II-III"]
+        classes: ["CIT 1154 - Computer Programing I-III", "CIT 1158 - Computer Networking II-III"],
+        office:
+            `
+                <table style="border: 1px solid black;">
+                            <tr>
+                                <th style="width: 5%;">Hours</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                            <tr>
+                                <td>8:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td rowspan="4">CIT-2259-L01 <br>IB2133</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>8:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9:30</td>
+                                <td></td>
+                                <td rowspan="4">CIT-1156-C01</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:00</td>
+                                <td></td>
+                                <td rowspan="4">CIT-2259-L02 <br>CE1365</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:00</td>
+                                <td></td>
+                                <td rowspan="4">CIT-2259-L02 <br>IB2133</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td></td>
+                                <td rowspan="3"></td>
+                                <td rowspan="4">CIT-1156-C01 <br>IB2131</td>
+                            </tr>
+                            <tr>
+                                <td>12:00</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13:00</td>
+                                <td></td>
+                                <td rowspan="4">CIT-1156-C02</td>
+                                <td rowspan="2">CIT-2259-C01 <br>CE1365</td>
+                                <td rowspan="4">CIT-1156-C02 <br>IB2131</td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td></td>
+                                <td rowspan="2" colspan="3">Student Office Hours</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                </table> 
+            `
     },
     tim: {
         name: "Timothy Frantz",
@@ -229,35 +344,254 @@ const profData = {
             "gourmet food and spice creator and entrepreneur, and an active member of the Lethbridge Kinsmen. Tim’s primary focus in his own life is his family, including seven very grown " +
             "children and 7.5 grandchildren. If the weather outside is decent, you will find him on a golf course, or travelling to tropical beaches, often in Mexico.",
         description: "Timothy teaches Database design and UX usability and design. His experience as a teacher and in the industry gives him a unique perspective and unique real-world lessons to teach.",
-        classes: ["CIT 2268 - UX usability and design", "CIT 1163 - Database Management Systems"]
+        classes: ["CIT 2268 - UX usability and design", "CIT 1163 - Database Management Systems"],
+        office: 
+            `
+                <table style="border: 1px solid black;">
+                            <tr>
+                                <th style="width: 5%;">Hours</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                            <tr>
+                                <td>8:00</td>
+                                <td rowspan="3">CIT-2268-C01 <br>IB2111</td>
+                                <td></td>
+                                <td rowspan="3">CIT-2268-C01 <br>IB2111</td>
+                                <td></td>
+                                <td rowspan="6">CIT-2276-L01 <br>IB2111</td>
+                            </tr>
+                            <tr>
+                                <td>8:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9:00</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td rowspan="2">Office Hours</td>
+                                <td></td>
+                                <td rowspan="4">CIT-1163-C01 <br>IB2131</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:00</td>
+                                <td rowspan="3">CIT-2268-C02 <br>IB2111</td>
+                                <td rowspan="3">CIT-2268-C02 <br>IB2111</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12:00</td>
+                                <td rowspan="4">CIT-1163-C01 <br>IB2131</td>
+                                <td rowspan="6">CIT-2276-L02 <br>IB2111</td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13:00</td>
+                                <td rowspan="4">CIT-2276-C01 <br>CE1365</td>
+                                <td rowspan="2" colspan="2">Office Hours</td>
+
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                            </tr>
+                            <tr>
+                                <td>14:00</td>
+                                <td rowspan="4">CIT-1163-C02 <br>IB2131</td>
+                                <td rowspan="4">CIT-1163-C02 <br>IB2131</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+            `
     },
     shoja: {
         name: "Shoja Mazidi",
         email: "shoja.mazidi@lethpolytech.ca",
-        img: "images/shoja.jpg",
-        background: "Prof. Shoja has a background in electrical engineering and has a passion for that side of computer science.",
-        description: "Prof. Shoja focuses on the more technical side of the industry, with his lesions focusing on the fundamental" + 
+        img: "images/shoja.png",
+        background: "Prof. Mazidi has a background in electrical engineering and has a passion for that side of computer science.",
+        description: "Prof. Mazidi focuses on the more technical side of the industry, with his lesions focusing on the fundamental" + 
         " backbones that allow this industry to work.",
-        classes: ["CIT 1152 - Computer Mathamatics", "CIT 1158 - Computer Networking I"] //TODO - Update all CIT Numbers
+        classes: ["CIT 1152 - Computer Mathamatics", "CIT 1158 - Computer Networking I"],
+        office:
+            `
+            <table style="border: 1px solid black;">
+                            <tr>
+                                <th style="width: 5%;">Hours</th>
+                                <th>Monday</th>
+                                <th>Tuesday</th>
+                                <th>Wednesday</th>
+                                <th>Thursday</th>
+                                <th>Friday</th>
+                            </tr>
+                            <tr>
+                                <td>8:00</td>
+                                <td rowspan="3">CIT-1158-C01 <br>IB1133</td>
+                                <td></td>
+                                <td rowspan="5">CIT-1158-L01 <br>IB2133</td>
+                                <td></td>
+                                <td rowspan="5">CIT-1158-L03 <br>IB2133</td>
+                            </tr>
+                            <tr>
+                                <td>8:30</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9:00</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>9:30</td>
+                                <td rowspan="3">CIT-1158 <br>IB1133</td>
+                                <td rowspan="4">CIT-2263 C01 <br>IB2133</td>
+                            </tr>
+                            <tr>
+                                <td>10:00</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>10:30</td>
+                                <td rowspan="2">Office Hours</td>
+                                <td></td>
+                                <td rowspan="2">Office Hours</td>
+                            </tr>
+                            <tr>
+                                <td>11:00</td>
+                                <td>Office Hours</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>11:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12:00</td>
+                                <td rowspan="4">CIT-2263-C02 <br>IB2133</td>
+                                <td rowspan="2">Practicum Office Hour</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>12:30</td>
+                                <td rowspan="5">CIT-1158-L02 <br>IB2133</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>13:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>14:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:00</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td>15:30</td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        </table>
+            `
     }
 };
 
 function loadProf(value) {
     const prof = profData[value];
+
     // If blank option selected, reset to defaults
     if (!prof) {
-        document.getElementById('prof-name-heading').textContent = "(Professor's Name)";
         document.getElementById('prof-bg-text').textContent = "";
         document.getElementById('prof-desc').textContent = "";
         document.getElementById('prof-email').textContent = "";
         document.getElementById('prof-classes').innerHTML = "<li><a href='classes.html'>(Classes taught...)</a></li>";
         document.querySelector('.prof-img img').src = "data:image/gif;base64,R0lGODlhAQABAIAAAAUEBAAAACwAAAAAAQABAAACAkQBADs=";
+        document.querySelector('.prof-schedule-box').innerHTML = "(No Schedule Available)";
         return;
-     }
-   
+    }
 
     // Update each element
-    document.getElementById('prof-name-heading').textContent = prof.name;
     document.getElementById('prof-bg-text').textContent = prof.background;
     document.getElementById('prof-desc').textContent = prof.description;
     document.getElementById('prof-email').textContent = prof.email;
@@ -268,6 +602,10 @@ function loadProf(value) {
     classesList.innerHTML = prof.classes
         .map(c => `<li><a href="classes.html">${c}</a></li>`)
         .join('');
+
+    // Render the office hours table
+    const box = document.querySelector('.prof-schedule-box');
+    box.innerHTML = prof.office ?? "(No Schedule Available)";
 }
 
 // ── Footer link visited state (All pages) ──

@@ -198,7 +198,7 @@ footer {
     }
 
 .top-btn-mobile {
-    display: hidden;
+    display: none;
     visibility: hidden;
         
 }
@@ -206,10 +206,12 @@ footer {
 /* ── SHARED SELECT STYLE ── */
 select.figma-select {
     padding: 3px 6px;
-    font-size: 13px;
+    font-size: 15px;
     border: 1px solid #777;
     background: #d8d8d8;
     color: #111;
+    font-weight: bold;
+    margin-right: 5%;
 }
 
 /* ════════════════════════════════════════════
@@ -540,9 +542,8 @@ table, tr, th, td {
 }
 
 .class-schedule-box {
-    /*background: #aaaaaa;*/
-    border: 1px solid #777;
-    height: 210px;
+    /*border: 1px solid #777;*/
+    height: 280px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -568,8 +569,10 @@ table, tr, th, td {
 .profs-top-bar {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: 10px;
     margin-bottom: 14px;
+    width: 100%;
 }
 
 .prof-name-heading {
@@ -656,18 +659,54 @@ table, tr, th, td {
     }
 
 
+/* ── Prof Schedule Table ── */
 .prof-schedule-box {
-    background: #aaaaaa;
-    border: 1px solid #777;
-    min-height: 140px;
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-style: italic;
-    font-size: 13px;
-    color: #333;
+    align-items: flex-start; /* override: let table fill the box naturally */
+    justify-content: flex-start;
+    padding: 6px;
+    overflow-x: auto;
+    width: 100%;
 }
+
+    .prof-schedule-box * {
+        color: #000 !important;
+    }
+
+    .prof-schedule-box th {
+        color: #000 !important;
+    }
+
+.prof-schedule-table {
+    width: 100%;
+    height: auto; /* override global table height: 100% */
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+    .prof-schedule-table th,
+    .prof-schedule-table td {
+        border: 1px solid #999;
+        padding: 4px 8px;
+        text-align: center;
+        font-weight: normal;
+        color: black !important;
+        white-space: nowrap;
+    }
+
+    .prof-schedule-table th {
+        background: #888;
+        color: black !important;
+        font-weight: bold;
+    }
+
+    .prof-schedule-table td:first-child {
+        font-weight: bold;
+        background: #bbb;
+    }
+
+    .prof-schedule-table td.has-class {
+        background: #d4ecd4; /* soft green for occupied slots */
+    }
 
 .prof-office-row {
     display: flex;
@@ -850,6 +889,7 @@ table, tr, th, td {
     }
 
     .top-btn-mobile {
+        display: block;
         visibility: visible;
         position: absolute;
         right: 16px;
@@ -858,11 +898,13 @@ table, tr, th, td {
         color: black;
         padding: 4px 14px;
         font-size: 13px;
-        align-items: center;
-        gap: 5px;
         border-radius: 2px;
-        margin-left: 5px;
+        margin-top: 25px;
     }
+
+        .top-btn-mobile:hover {
+            background: #4a4a4a;
+        }
 
     .top-btn {
         visibility: visible;
@@ -877,6 +919,7 @@ table, tr, th, td {
         align-items: center;
         gap: 5px;
         border-radius: 2px;
+        margin-top: 25px;
     }
 
     /* ══════════════════
@@ -974,7 +1017,11 @@ table, tr, th, td {
        PROFESSORS PAGE
     ══════════════════ */
     .profs-top-bar {
-        flex-wrap: wrap;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 14px;
     }
 
     .prof-name-heading {
@@ -1003,7 +1050,9 @@ table, tr, th, td {
     .prof-schedule-box {
         min-height: 100px;
         width: 100%;
+        color: black;
     }
+    
 
     /* ══════════════════
        SKILLS PAGE

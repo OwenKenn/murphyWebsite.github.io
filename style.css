@@ -19,6 +19,8 @@ body {
     overflow: hidden;
 }
 
+
+
 /* ── HEADER ── */
 header {
     background: #BABABA;
@@ -473,6 +475,25 @@ select.figma-select {
 /* ════════════════════════════════════════════
    CLASSES PAGE
    ════════════════════════════════════════════ */
+table {
+    width: 100%;   
+    height: 100%;
+}
+
+tr {
+   height: 10px; 
+}
+
+td {
+    font-weight: bold;
+    text-align: center;
+}
+
+table, tr, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    
+}
 .classes-content {
     padding: 14px;
 }
@@ -519,15 +540,13 @@ select.figma-select {
 }
 
 .class-schedule-box {
-    background: #aaaaaa;
+    /*background: #aaaaaa;*/
     border: 1px solid #777;
-    height: 110px;
+    height: 210px;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-style: italic;
-    font-size: 13px;
-    color: #333;
+    color: black;
 }
 
 .class-repeat-note {

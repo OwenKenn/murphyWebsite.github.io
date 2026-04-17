@@ -43,7 +43,6 @@ header {
     position: absolute;
     left: 7px;
     transition: width 0.3s, height 0.3s;
-    /*background: #1a4a8a;*/
     display: flex;
     align-items: center;
     justify-content: center;
@@ -101,7 +100,6 @@ nav {
         color: black;
         text-decoration: none;
         font-size: 13px;
-        /*transition: background 0.15s;*/
     }
 
         nav a:hover {
@@ -144,16 +142,19 @@ footer {
         text-decoration: none;
         font-size: 12px;
         font-weight: bold;
+        text-align: center;
     }
 
     footer a:visited {
         color: #D3D3D3;
         font-style: italic;
+        text-align: center;
     }
 
     footer a:hover {
         color: #FFFFFF;
         text-decoration: underline white;
+        text-align: center;
     }
 
 
@@ -332,10 +333,10 @@ select.figma-select {
     flex: 1;
     min-height: 0; /* prevents flex children from overflowing */
 }
-
+/*NOTE; 300px wide key image needed. Shoud shrink and scale the image*/
 .map-key-panel {
     width: 300px;
-    height: 150%;
+    height: 100%;
     flex-shrink: 0;
     padding-right: 10px;
     overflow-y: auto;
@@ -587,10 +588,6 @@ select.figma-select {
         list-style: none;
     }
 
-        .prof-field-value ul li::before {
-            content: '-';
-            margin-right: 4px;
-        }
 
 .prof-schedule-box {
     background: #aaaaaa;
@@ -670,9 +667,18 @@ select.figma-select {
         }
 
     .skills-box a {
-        color: #cc2233;
-        text-decoration: underline;
+        color: blue;
+        text-decoration: none;
     }
+        .skills-box a:hover {
+            text-decoration: underline;
+            font-weight: bold;
+        }
+
+        .skills-box a:active {
+            text-decoration: underline;
+            font-weight: bold;
+        }
 
 /* ════════════════════════════════════════════
    RESPONSIVE / MOBILE STYLES
@@ -744,7 +750,8 @@ select.figma-select {
         gap: 10px 20px;
         font-size: 14px;
         padding: 10px 16px 60px; /* extra bottom padding so nav doesn't overlap */
-        justify-content: flex-start;
+        justify-content: center;
+        align-content: center;
     }
 
         footer a:link,
@@ -841,6 +848,12 @@ select.figma-select {
         min-height: 80px;
         padding: 16px;
     }
+        .class-schedule-content {
+            height: auto;
+            min-height: 80px;
+            color: black;
+            padding-left: 25px;
+        }
 
     /* ══════════════════
        PROFESSORS PAGE

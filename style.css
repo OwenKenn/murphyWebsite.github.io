@@ -157,8 +157,8 @@ footer {
         text-align: center;
     }
 
-
 .top-btn {
+    visibility: visible;
     position: absolute;
     right: 16px;
     background: #D9D9D9;
@@ -166,7 +166,22 @@ footer {
     color: black;
     padding: 4px 14px;
     font-size: 13px;
-    display: none;
+    /*display: none;*/
+    align-items: center;
+    gap: 5px;
+    border-radius: 2px;
+}
+
+.top-btn-desk {
+    visibility: visible;
+    position: absolute;
+    right: 16px;
+    background: #D9D9D9;
+    border: 1px solid #666;
+    color: black;
+    padding: 4px 14px;
+    font-size: 13px;
+    /*display: none;*/
     align-items: center;
     gap: 5px;
     border-radius: 2px;
@@ -179,6 +194,12 @@ footer {
     .top-btn:hover {
         background: #4a4a4a;
     }
+
+.top-btn-mobile {
+    display: hidden;
+    visibility: hidden;
+        
+}
 
 /* ── SHARED SELECT STYLE ── */
 select.figma-select {
@@ -195,20 +216,15 @@ select.figma-select {
 .home-content {
     padding: 16px;
     display: flex;
-    flex-direction: column;
-    gap: 25px;
-}
-
-.home-top-row {
-    display: flex;
-    gap: 20px;
+    gap: 14px;
     align-items: flex-start;
 }
 
 .home-building-img {
+    width: 50%;
+    flex-shrink: 0;
     background: #000;
     border: 1px solid #888;
-    flex-shrink: 0;
     overflow: hidden;
 }
 
@@ -219,6 +235,13 @@ select.figma-select {
         display: block;
     }
 
+.home-right {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    flex: 1;
+}
+
 .home-top-text {
     font-size: 13px;
     color: #111;
@@ -227,11 +250,11 @@ select.figma-select {
 
 .home-bottom-row {
     display: flex;
+    flex-direction: column;
     gap: 14px;
 }
 
 .home-card {
-    flex: 1;
     background: #c8c8c8;
     border: 1px solid #888;
     display: flex;
@@ -287,6 +310,7 @@ select.figma-select {
 .map-top-bar {
     display: flex;
     align-items: center;
+    justify-content: center; 
     gap: 10px;
     margin-bottom: 10px;
 }
@@ -306,7 +330,7 @@ select.figma-select {
 .map-tabs {
     display: flex;
     gap: 4px;
-    margin-left: auto;
+    margin-left: 0; 
 }
 
 .map-tab {
@@ -335,7 +359,7 @@ select.figma-select {
 }
 /*NOTE; 300px wide key image needed. Shoud shrink and scale the image*/
 .map-key-panel {
-    width: 300px;
+    width: 250px;
     height: 100%;
     flex-shrink: 0;
     padding-right: 10px;
@@ -345,7 +369,6 @@ select.figma-select {
 
 .map-key img {
     width: 100%;
-    height: 100%;
     height: auto;
     display: block;
 }
@@ -396,15 +419,10 @@ select.figma-select {
     }
 
 .map-key {
-    overflow-y: auto;
-    max-height: calc(100vh - 160px);
+    overflow-y: visible;
+    max-height: none;
 }
 
-    .map-key img {
-        width: 135px;
-        height: auto;
-        display: block;
-    }
 .key-entry {
     display: flex;
     align-items: flex-start;
@@ -421,6 +439,36 @@ select.figma-select {
         width: 18px;
         text-align: center;
     }
+
+.map-zoom-btns {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    z-index: 10;
+}
+
+    .map-zoom-btns button {
+        width: 30px;
+        height: 30px;
+        background: #D9D9D9;
+        border: 1px solid #555;
+        border-radius: 3px;
+        font-size: 18px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+        .map-zoom-btns button:hover {
+            background: #4a4a4a;
+            color: white;
+        }
 
 /* ════════════════════════════════════════════
    CLASSES PAGE
@@ -636,10 +684,18 @@ select.figma-select {
     margin: 6px 0 6px 16px;
 }
 
-.skills-semesters {
+.skills-semesters1 {
     display: flex;
     gap: 14px;
-    margin-left: 16px;
+    /*margin-left: 16px;*/
+    margin-left: 35%;
+}
+
+.skills-semesters2 {
+    display: flex;
+    gap: 14px;
+    /*margin-left: 16px;*/
+    margin-left: 33.5%;
 }
 
 .skills-box {
@@ -683,9 +739,7 @@ select.figma-select {
 /* ════════════════════════════════════════════
    RESPONSIVE / MOBILE STYLES
    ════════════════════════════════════════════ */
-
-@media (max-width: 768px) {
-
+@media (max-width: 1024px) { 
     /* ── Body & layout ── */
     body {
         overflow: auto;
@@ -711,6 +765,7 @@ select.figma-select {
 
         header h1 {
             font-size: 15px;
+            margin-left: 15px;
         }
 
     .logo {
@@ -759,15 +814,56 @@ select.figma-select {
             font-size: 12px;
         }
 
+    .top-btn-desk {
+        display: hidden;
+        visibility: hidden;
+        position: absolute;
+        right: 16px;
+        background: #D9D9D9;
+        border: 1px solid #666;
+        color: black;
+        padding: 4px 14px;
+        font-size: 13px;
+        align-items: center;
+        gap: 5px;
+        border-radius: 2px;
+        margin-left: 5px;
+    }
+
+    .top-btn-mobile {
+        visibility: visible;
+        position: absolute;
+        right: 16px;
+        background: #D9D9D9;
+        border: 1px solid #666;
+        color: black;
+        padding: 4px 14px;
+        font-size: 13px;
+        align-items: center;
+        gap: 5px;
+        border-radius: 2px;
+        margin-left: 5px;
+    }
+
     .top-btn {
-        position: static;
-        margin-left: auto;
+        visibility: visible;
+        position: absolute;
+        right: 16px;
+        background: #D9D9D9;
+        border: 1px solid #666;
+        color: black;
+        padding: 4px 14px;
+        font-size: 13px;
+        /*display: none;*/
+        align-items: center;
+        gap: 5px;
+        border-radius: 2px;
     }
 
     /* ══════════════════
        HOME PAGE
     ══════════════════ */
-    .home-top-row {
+    .home-content {
         flex-direction: column;
     }
 
@@ -776,8 +872,8 @@ select.figma-select {
         height: 180px;
     }
 
-    .home-bottom-row {
-        flex-direction: column;
+    .home-right {
+        width: 100%;
     }
 
     .home-card {
@@ -798,14 +894,14 @@ select.figma-select {
 
     .map-top-bar {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center; 
         gap: 8px;
     }
 
     .map-tabs {
         margin-left: 0;
         width: 100%;
-        justify-content: stretch;
+        justify-content: center;
     }
 
     .map-tab {
@@ -893,7 +989,12 @@ select.figma-select {
     /* ══════════════════
        SKILLS PAGE
     ══════════════════ */
-    .skills-semesters {
+    .skills-semesters1 {
+        flex-direction: column;
+        margin-left: 0;
+    }
+
+    .skills-semesters2 {
         flex-direction: column;
         margin-left: 0;
     }
@@ -901,35 +1002,5 @@ select.figma-select {
     .skills-box {
         min-width: 0;
         width: 100%;
-    }
-}
-
-/* ── Tablet (769px – 1024px): partial adjustments ── */
-@media (min-width: 769px) and (max-width: 1024px) {
-    .home-bottom-row {
-        flex-wrap: wrap;
-    }
-
-    .prof-img {
-        width: 160px;
-        height: 180px;
-    }
-
-    .prof-left {
-        width: 160px;
-    }
-
-    .skills-semesters {
-        flex-wrap: wrap;
-    }
-
-    .skills-box {
-        min-width: 140px;
-    }
-
-    footer {
-        flex-wrap: wrap;
-        gap: 8px 20px;
-        font-size: 14px;
     }
 }

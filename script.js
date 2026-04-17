@@ -9,7 +9,7 @@ function scrollToTop() {
 }
 
 // ── Map tab switching (Map page only) ──
-let currentBuilding = 'full';
+let currentBuilding = 'ib';
 let currentTab = 'floorplan';
 
 function selectMapTab(el) {
@@ -76,6 +76,32 @@ function clampPan() {
     const areaH = area.clientHeight;
     originX = Math.min(0, Math.max(originX, areaW - areaW * scale));
     originY = Math.min(0, Math.max(originY, areaH - areaH * scale));
+}
+
+function zoomIn() {
+    const area = document.querySelector('.map-image-area');
+    const rect = area.getBoundingClientRect();
+    const midX = rect.width / 2;
+    const midY = rect.height / 2;
+    const newScale = Math.min(MAX_SCALE, scale * 1.25);
+    originX = midX - (midX - originX) * (newScale / scale);
+    originY = midY - (midY - originY) * (newScale / scale);
+    scale = newScale;
+    clampPan();
+    applyTransform();
+}
+
+function zoomOut() {
+    const area = document.querySelector('.map-image-area');
+    const rect = area.getBoundingClientRect();
+    const midX = rect.width / 2;
+    const midY = rect.height / 2;
+    const newScale = Math.max(MIN_SCALE, scale * 0.8);
+    originX = midX - (midX - originX) * (newScale / scale);
+    originY = midY - (midY - originY) * (newScale / scale);
+    scale = newScale;
+    clampPan();
+    applyTransform();
 }
 
 document.addEventListener('DOMContentLoaded', () => {
